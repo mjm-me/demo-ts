@@ -1,4 +1,4 @@
-class Company {
+export class Company {
   #nif: string;
   #name: string;
 

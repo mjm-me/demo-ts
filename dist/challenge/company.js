@@ -1,5 +1,4 @@
-"use strict";
-class Company {
+export class Company {
     #nif;
     #name;
     constructor(nif, name) {

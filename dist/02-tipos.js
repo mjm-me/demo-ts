@@ -36,19 +36,19 @@
     class User {
         name;
         age;
-        pet;
+        pets;
         constructor(name, age, pets = []) {
             this.name = name;
             this.age = age;
-            this.pet ?  = pets : ;
+            this.pets = pets;
         }
     }
     let user1;
     let user2;
-    // es tipado nominal porque depende del nombre
     user1 = new User('Pepe', 22);
-    //tipado estructural, porque depende de la estructura de los datos
-    user2 = { name: 'Pepe', age: 32 };
+    // Tipado estructural -> NO ES tipado nominal
+    user2 = { name: 'Juan', age: 32 };
     console.log(user1, user2);
-    console.log(user1, user2);
+    console.log(user1 instanceof User);
+    console.log(user2 instanceof User);
 }
