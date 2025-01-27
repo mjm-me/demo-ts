@@ -1,3 +1,5 @@
+// ampliar info https://apuntes.de/typescript/#gsc.tab=0
+
 /*eslint-disable */
 
 // Inferencia de tipos

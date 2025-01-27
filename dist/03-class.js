@@ -7,33 +7,35 @@ class User {
         console.log('Load class USER');
     }
     #name;
-    #age;
+    age;
     #address;
-    constructor(name, age, address) {
+    pet;
+    constructor(name, age, address, pets = []) {
         this.#name = name;
-        this.#age = age;
+        this.age = age;
         this.#address = address;
+        this.pet = pets;
         User.countUsers();
     }
-    // get name() {
+    // get name(){
     //     return this.#name;
     // }
     // set name(name) {
     //     this.#name = name;
     // }
     greet() {
-        console.log(`Hola, soy ${this.#name}, tengo ${this.#age} años y vivo en ${this.#address}`);
+        console.log(`Hola, soy ${this.#name}, tengo ${this.age} años y vivo en ${this.#address}`);
     }
     grow() {
-        this.#age++;
+        this.age++;
     }
 }
-const user1 = new User('Pepe', 22, 'Madrid');
+const user1 = new User('Pepe', 22, 'Madrid', ['Maui']);
 const user2 = new User('Juan', 24, 'Albacete');
 console.log(user1, user2);
-//user1.address = 'Soria';
-// // user1.#name = 'Jose';
-// // delete user1.#name;
+// user1.address = 'Soria';
+// user1.#name = 'Jose';
+// delete user1.age;
 console.log(user1, user2);
 user1.grow();
 user1.greet();
@@ -63,13 +65,16 @@ class Company {
     }
 }
 export class Product {
-    skud;
-    name;
-    unityPrice;
-    constructor(skud, name, unityPrice) {
-        this.skud = skud;
-        this.name = name;
-        this.unityPrice = unityPrice;
+    #sku;
+    #name;
+    #unityPrice;
+    constructor(sku, name, unitaryPrice) {
+        this.#sku = sku;
+        this.#name = name;
+        this.#unityPrice = unitaryPrice;
+    }
+    calculatePrice(items) {
+        return items * this.#unityPrice;
     }
 }
 export class Invoice {
@@ -84,12 +89,12 @@ export class Invoice {
     // declaración de propiedades preferiblemente privadas
     #id = Invoice.#getID();
     #client;
-    #product;
+    #products;
     #amount;
     #iva;
     // constructor
     constructor(client, product, amount, iva = 1.21) {
-        this.#product = product;
+        this.#products = [product];
         this.#amount = amount;
         this.#iva = iva;
         this.#client = client;
@@ -112,31 +117,56 @@ export class Invoice {
         Nif: ${this.#client.nif}
 
         Factura ${this.#id}
+
+        ${this.#products.map((item) => {
+            return `${item.#name} + ${this.#amount} unidades a ${item.#unityPrice}€ \n`;
+            `
+}.join()
+
+          )
+          
+        }
+
+
+
+
+
+
         ${this.#product.name} + ${this.#amount} unidades a ${this.#product.unityPrice}€ 
-        Total.................. ${price}€
+        Total.................. ${this.#products}€
         ----------------------------------------------
         Total + IVA ........... ${total}
         `;
-        console.log(invoice);
-    }
-}
+            console.log(invoice);
+        })}
+
 const client1 = new Company('5656565843D', 'Acme');
 const apples = new Product('123', 'apples', 4);
 const invoice1 = new Invoice(client1, apples, 20, 1.04);
+
 const client2 = new Company('5656565843D', 'CAS');
 const mobile = new Product('456', 'mobile', 500);
 const invoice2 = new Invoice(client2, mobile, 1, 1.04);
+
 const invoice3 = new Invoice(invoice2.client, mobile, 1, 1.04);
+
 console.log(invoice1, invoice2);
 invoice1.printInvoice();
 invoice2.printInvoice();
 invoice3.printInvoice();
+
 // Relaciones entre clases
 // Agregación / Composición v. Asociación
 // Herencia
+
 // Añadimos
 // - la empresa (NIF - nombre)
 // - el cliente (NIF - nombre)
+
 // - Diversos conceptos --> Array
 // - Se refleja todo a imprimir la factura
+
 // - La posibilidad de añadirlos mediante un método
+        ;
+    }
+}
