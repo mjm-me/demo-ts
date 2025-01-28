@@ -201,8 +201,20 @@ console.log(User.usersNumber);
     delete: (id: string) => Item;
   }
 
-  // class RepoNotesSQL implements Repository {}
+  class RepoNotesSQL implements Repository {
+    read: () {
+        return [];
+    }
 
+    readById: (id: string) {
+        return [];
+    }
+  }
+
+
+
+
+  
   // class RepoNotesMongo implements Repository {}
 
   // const repo = new RepoNotesMongo();
