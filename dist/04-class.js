@@ -152,8 +152,94 @@ console.log(User.usersNumber);
     console.log(e1.greet());
 }
 {
-    // class RepoNotesSQL implements Repository {}
-    // class RepoNotesMongo implements Repository {}
-    // const repo = new RepoNotesMongo();
-    // repo.read();
+    class RepoNotesSQL {
+        read() {
+            return [];
+        }
+        readById(id) {
+            return {};
+        }
+        create(data) {
+            return {};
+        }
+        update(id, data) {
+            return {};
+        }
+        delete(id) {
+            return {};
+        }
+        generateSQL() {
+            return '';
+        }
+    }
+    class RepoNotesMongo {
+        read() {
+            return [];
+        }
+        readById(id) {
+            return {};
+        }
+        create(data) {
+            return {};
+        }
+        update(id, data) {
+            return {};
+        }
+        delete(id) {
+            return {};
+        }
+    }
+    const repo = new RepoNotesMongo();
+    repo.read();
+    repo.generateSQL();
+}
+// Interfaz/type como tipo de data
+{
+    function foo(param) {
+        console.log(param.name, param.age);
+    }
+    const u = { name: 'Pepe', age: 23, c: 9 };
+    // foo({ name: 'Pepe', age: 23, c: 9 });
+    foo(u);
+}
+// Interfaz/type como implements
+{
+    class User {
+        name;
+        age;
+        address;
+        constructor(name, age, address) {
+            this.name = name;
+            this.age = age;
+            this.address = address;
+        }
+    }
+    const p = new User('Pepe', 23, 'Calle Falsa 123');
+    p.address;
+}
+{
+    class Animal {
+        makeSound() {
+            console.log('Animal makes a sound.');
+        }
+    }
+    class Dog extends Animal {
+        makeSound() {
+            console.log('Dog barks.');
+        }
+        eat() { }
+    }
+    class Cat extends Animal {
+        makeSound() {
+            console.log('Cat meows.');
+        }
+    }
+    let animal;
+    animal = new Dog();
+    console.log(animal instanceof Dog); // true
+    console.log(animal instanceof Animal); // true
+    animal.makeSound(); // Dog barks (enlace dinámico)
+    animal.eat();
+    animal = new Cat();
+    animal.makeSound(); // Cat meows (enlace dinámico)
 }
