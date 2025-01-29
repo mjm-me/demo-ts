@@ -1,16 +1,10 @@
-export class ODMLite<T> implements TypeODM<T> {
+import { readFromDisk, writeToDisk } from './helpers';
+
+export class ORMLite<T extends { id: string }> implements TypeORM<T> {
   file: string;
-
-  constructor(file: string, collection: string) {
+  constructor(file: string) {
     this.file = file;
-    this.collection = collection;
   }
-
-
-
-
-
-
 
   private readDB(): Record<string, T[]> {
     const txtData = readFromDisk();

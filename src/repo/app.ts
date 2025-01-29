@@ -29,5 +29,5 @@ import { RepoItemFile } from './repo-item-file';
 
 // Instanciamos la clase y leemos los datos
 
-// const repo = new RepoItemFile();
-// console.log(repo.read());
+const repo = new RepoItemFile();
+console.log(repo.read());

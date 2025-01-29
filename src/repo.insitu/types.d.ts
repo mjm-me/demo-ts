@@ -18,4 +18,3 @@ interface TypeODM<T extends WithId> {
   ) => T;
   deleteById: (collection: string, id: T['id']) => T;
 }
-q;
